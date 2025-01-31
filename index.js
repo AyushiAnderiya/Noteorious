@@ -22,6 +22,12 @@ app.get('/',(req,res)=>{
     })
     
 })
+app.get('/files/:filename',(req,res)=>{
+    fs.readFile(`./files/${req.params.filename}`,"utf-8",(err,filedata)=>{
+        res.render("show",{filename:req.params.filename,filedata:filedata})
+    })
+    
+})
 //spilit se sb alag alag array me bn jata h or fir uunhi array ko apan join kar leta h
 app.post('/create',(req,res)=>{
     fs.writeFile(`./files/${req.body.title.split(' ').join('')}.txt`,req.body.details,function(err){
