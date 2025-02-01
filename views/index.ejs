@@ -14,10 +14,10 @@
         <div class="form p-10 text-white">
             <form action="/create" method="post">
                 <input class="block  w-full rounded-lg outline outline-3 outline-indigo-300 px-5 py-2 bg-zinc-800"
-                    type="text" placeholder="title" name="title">
+                    type="text" placeholder="Title" name="title">
                 <textarea
                     class="block w-full rounded-lg outline outline-3 outline-purple-300 mt-3 px-5 py-2  resize-none bg-zinc-800"
-                    placeholder="task" name="details"></textarea>
+                    placeholder="Task" name="details"></textarea>
                 <input class="mt-2 bg-blue-600 px-5 py-2 rounded-lg" type="submit" value="Create Task">
             </form>
         </div>
@@ -26,7 +26,9 @@
                 <%files.forEach(function(val){%>
                     <div class="task min-w-72 px-3 py-4 bg-zinc-800">
                         <h1 class="text-white text-3xl tracking-tighter"><%= val%></h1>
-                        <a class="text-blue-400 inline-block mt-3" href="/files/<%= val%>">Read More.....</a>
+                        <div class="flex w-full justify-between item-centre mt-3">
+                        <a class="text-blue-400 inline-block " href="/files/<%= val%>">Read More.....</a>
+                        <a class="text-zinc-500 " href="/edit/<%= val %>">edit</a></div>
                     </div>
                     <%})%>
                         <%}else{%>

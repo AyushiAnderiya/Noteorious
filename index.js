@@ -29,6 +29,9 @@ app.get('/files/:filename',(req,res)=>{
     
 })
 //spilit se sb alag alag array me bn jata h or fir uunhi array ko apan join kar leta h
+app.get('/edit/:filename',(req,res)=>{
+    res.render("edit",{filename:req.params.filename});
+})
 app.post('/create',(req,res)=>{
     fs.writeFile(`./files/${req.body.title.split(' ').join('')}.txt`,req.body.details,function(err){
         if(err)
@@ -38,5 +41,10 @@ app.post('/create',(req,res)=>{
     })
     
     
+})
+app.post('/edit',(req,res)=>{
+    fs.rename(`./files/${req.body.oldname}`,`./files/${req.body.newname}`,(err)=>{
+        res.redirect("/")
+    })
 })
 app.listen(3000);
